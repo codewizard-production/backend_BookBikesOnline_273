@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <property name="schemaName" value="bookbikesonline"></property>
+    <property name="author=" value="db-designer"></property>
+    <changeSet id="v1-01-01" author="${author}">
+    
+ <createTable schemaName="${schemaName}" tableName="Verfication">
+	<column name="VerificationID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+ 	<column name="IDType" type="INTEGER" />
+   
+     <column name="LicenseNumber" type="BIGINT" />
+    
+     <column name="DeliveryFrom" type="BOOLEAN" />
+    
+     <column name="IsVerificationDone" type="BOOLEAN" />
+    
+     <column name="DateOfVerification" type="DATE" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Payment">
+	<column name="PaymentID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="BookingID" type="INTEGER" />
+    
+     <column name="CustomerName" type="VARCHAR(250)" />
+    
+     <column name="CustomerPhno" type="BIGINT" />
+    
+     <column name="PaymentMode" type="BOOLEAN" />
+    
+     <column name="PaymentStatus" type="BOOLEAN" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Customer">
+	<column name="CustomerID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="CustomerName" type="VARCHAR(250)" />
+    
+     <column name="CustomerPhoneNumber" type="BIGINT" />
+    
+     <column name="CusrtomerAddress" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Insurance">
+    <column name="InsuranceCompany" type="VARCHAR(250)" />
+    
+     <column name="InsurancePolicy" type="BOOLEAN" />
+    
+     <column name="BikeModel" type="VARCHAR(250)" />
+    
+     <column name="DateOfBooking" type="DATE" />
+    
+     <column name="Manufacturer" type="VARCHAR(250)" />
+    
+     <column name="CustomerID" type="INTEGER" />
+    
+ 	<column name="InsuranceID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ServiceCrew">
+	<column name="ServiceID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="ServiceguyName" type="VARCHAR(250)" />
+    
+     <column name="CustomerID" type="INTEGER" />
+    
+     <column name="BikeID" type="INTEGER" />
+    
+     <column name="CurrentBikeAddress" type="VARCHAR(250)" />
+    
+     <column name="ProblemIdentified" type="BOOLEAN" />
+    
+     <column name="SolutionProvided" type="BOOLEAN" />
+    
+     <column name="ReturntoManufacturer" type="BOOLEAN" />
+    
+     <column name="InsuranceCovered" type="BOOLEAN" />
+    
+     <column name="Issueby" type="BOOLEAN" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ReturnRentedBike">
+	<column name="BookingID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="DateOfBooking" type="INTEGER" />
+    
+     <column name="FromDate" type="INTEGER" />
+    
+     <column name="ToDate" type="INTEGER" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Booking">
+	<column name="BookingID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="DateOfBooking" type="DATE" />
+    
+     <column name="FromDate" type="DATE" />
+    
+     <column name="ToDate" type="DATE" />
+    
+     <column name="BikeAvailability" type="BOOLEAN" />
+    
+     <column name="TokenAmount" type="INTEGER" />
+    
+     <column name="Amtpaidmode" type="BOOLEAN" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="RoadsideAssistance">
+	<column name="CustomerID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="BookingID" type="INTEGER" />
+    
+     <column name="BikeID" type="INTEGER" />
+    
+     <column name="Manufacturer" type="VARCHAR(250)" />
+    
+     <column name="BikeModel" type="VARCHAR(250)" />
+    
+     <column name="ProblemwithBike" type="BOOLEAN" />
+    
+     <column name="Address" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ExtendBooking">
+	<column name="BookingID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="DateOfBooking" type="DATE" />
+    
+     <column name="FromDate" type="DATE" />
+    
+     <column name="ToDate" type="DATE" />
+    
+     <column name="NewToDate" type="DATE" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="RentalCompany">
+	<column name="CompanyID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="CompanyName" type="VARCHAR(250)" />
+    
+     <column name="CompanyRegistrationNo" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="ReturnBikeInspection">
+	<column name="BikeID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Manufacturer" type="VARCHAR(250)" />
+    
+     <column name="Model" type="VARCHAR(250)" />
+    
+     <column name="YearOfRegistration" type="DATE" />
+    
+     <column name="PickupFrom" type="VARCHAR(250)" />
+    
+     <column name="DateOfVerification" type="DATE" />
+    
+     <column name="AnyDamage" type="BOOLEAN" />
+    
+     <column name="CostofDamage" type="INTEGER" />
+    
+     <column name="DamagePaymentReceived" type="BOOLEAN" />
+    
+     <column name="DamageType" type="BOOLEAN" />
+    
+ 	
+</createTable>
+ <createTable schemaName="${schemaName}" tableName="Bike">
+	<column name="BikeID" type="SERIAL" autoIncrement="true" >
+        <constraints nullable="false" primaryKey="true"/>
+    </column>
+     <column name="Manufacturer" type="VARCHAR(250)" />
+    
+     <column name="Model" type="VARCHAR(250)" />
+    
+     <column name="YearOfRegistration" type="DATE" />
+    
+     <column name="Color" type="VARCHAR(250)" />
+    
+ 	
+</createTable>
+	
+  <createTable schemaName="${schemaName}" tableName="ReturnRentedBikeInspection">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="BookingID" type="INTEGER" />
+	<column name="BikeID" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="CustomerExtendRental">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="CustomerID" type="INTEGER" />
+	<column name="BookingID" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="RentalCompanyBookings">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="CompanyID" type="INTEGER" />
+	<column name="BookingID" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="RentalCompanyCustomers">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="CompanyID" type="INTEGER" />
+	<column name="CustomerID" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="CustomerBookings">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="CustomerID" type="INTEGER" />
+	<column name="BookingID" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="RentalCompanyBikes">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="CompanyID" type="INTEGER" />
+	<column name="BikeID" type="INTEGER" />
+</createTable>
+  <createTable schemaName="${schemaName}" tableName="CustomerReturns">
+	<column name="Id" type="SERIAL" autoIncrement="true">
+		<constraints primaryKey="true" nullable="false"/>
+	</column>
+	<column name="CustomerID" type="INTEGER" />
+	<column name="BookingID" type="INTEGER" />
+</createTable>
+
+ 
+	<addForeignKeyConstraint baseTableName="ReturnRentedBikeInspection" baseTableSchemaName="${schemaName}"  baseColumnNames="BookingID" constraintName="ReturnBikeInspection_BookingID_fk"
+	                                  referencedTableName="ReturnRentedBike" referencedTableSchemaName="${schemaName}" referencedColumnNames="BookingID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="ReturnRentedBikeInspection" baseTableSchemaName="${schemaName}"  baseColumnNames="BikeID" constraintName="ReturnBikeInspection_BikeID_fk"
+	                                  referencedTableName="ReturnBikeInspection" referencedTableSchemaName="${schemaName}" referencedColumnNames="BikeID"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="CustomerExtendRental" baseTableSchemaName="${schemaName}"  baseColumnNames="CustomerID" constraintName="ExtendBooking_CustomerID_fk"
+	                                  referencedTableName="Customer" referencedTableSchemaName="${schemaName}" referencedColumnNames="CustomerID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="CustomerExtendRental" baseTableSchemaName="${schemaName}"  baseColumnNames="BookingID" constraintName="ExtendBooking_BookingID_fk"
+	                                  referencedTableName="ExtendBooking" referencedTableSchemaName="${schemaName}" referencedColumnNames="BookingID"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="RentalCompanyBookings" baseTableSchemaName="${schemaName}"  baseColumnNames="CompanyID" constraintName="Booking_CompanyID_fk"
+	                                  referencedTableName="RentalCompany" referencedTableSchemaName="${schemaName}" referencedColumnNames="CompanyID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="RentalCompanyBookings" baseTableSchemaName="${schemaName}"  baseColumnNames="BookingID" constraintName="Booking_BookingID_fk"
+	                                  referencedTableName="Booking" referencedTableSchemaName="${schemaName}" referencedColumnNames="BookingID"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="RentalCompanyCustomers" baseTableSchemaName="${schemaName}"  baseColumnNames="CompanyID" constraintName="Customer_CompanyID_fk"
+	                                  referencedTableName="RentalCompany" referencedTableSchemaName="${schemaName}" referencedColumnNames="CompanyID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="RentalCompanyCustomers" baseTableSchemaName="${schemaName}"  baseColumnNames="CustomerID" constraintName="Customer_CustomerID_fk"
+	                                  referencedTableName="Customer" referencedTableSchemaName="${schemaName}" referencedColumnNames="CustomerID"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="CustomerBookings" baseTableSchemaName="${schemaName}"  baseColumnNames="CustomerID" constraintName="Booking_CustomerID_fk"
+	                                  referencedTableName="Customer" referencedTableSchemaName="${schemaName}" referencedColumnNames="CustomerID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="CustomerBookings" baseTableSchemaName="${schemaName}"  baseColumnNames="BookingID" constraintName="Booking_BookingID_fk"
+	                                  referencedTableName="Booking" referencedTableSchemaName="${schemaName}" referencedColumnNames="BookingID"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="RentalCompanyBikes" baseTableSchemaName="${schemaName}"  baseColumnNames="CompanyID" constraintName="Bike_CompanyID_fk"
+	                                  referencedTableName="RentalCompany" referencedTableSchemaName="${schemaName}" referencedColumnNames="CompanyID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="RentalCompanyBikes" baseTableSchemaName="${schemaName}"  baseColumnNames="BikeID" constraintName="Bike_BikeID_fk"
+	                                  referencedTableName="Bike" referencedTableSchemaName="${schemaName}" referencedColumnNames="BikeID"/>
+ 
+ 
+	<addForeignKeyConstraint baseTableName="CustomerReturns" baseTableSchemaName="${schemaName}"  baseColumnNames="CustomerID" constraintName="ReturnRentedBike_CustomerID_fk"
+	                                  referencedTableName="Customer" referencedTableSchemaName="${schemaName}" referencedColumnNames="CustomerID"/>
+	                                  
+	<addForeignKeyConstraint baseTableName="CustomerReturns" baseTableSchemaName="${schemaName}"  baseColumnNames="BookingID" constraintName="ReturnRentedBike_BookingID_fk"
+	                                  referencedTableName="ReturnRentedBike" referencedTableSchemaName="${schemaName}" referencedColumnNames="BookingID"/>
+ 
+	
+       
+	<addColumn tableName="Booking" schemaName="${schemaName}">
+	    <column name="BookingBike" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Booking" baseColumnNames="BookingBike" baseTableSchemaName="${schemaName}" constraintName="Booking_Bike_fk" referencedTableName="Bike"
+	                                 referencedColumnNames="BikeID" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Booking" schemaName="${schemaName}">
+	    <column name="BookingVerfication" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Booking" baseColumnNames="BookingVerfication" baseTableSchemaName="${schemaName}" constraintName="Booking_Verfication_fk" referencedTableName="Verfication"
+	                                 referencedColumnNames="VerificationID" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Booking" schemaName="${schemaName}">
+	    <column name="BookingPayment" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Booking" baseColumnNames="BookingPayment" baseTableSchemaName="${schemaName}" constraintName="Booking_Payment_fk" referencedTableName="Payment"
+	                                 referencedColumnNames="PaymentID" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Booking" schemaName="${schemaName}">
+	    <column name="BookingAssitance" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Booking" baseColumnNames="BookingAssitance" baseTableSchemaName="${schemaName}" constraintName="Booking_Assitance_fk" referencedTableName="RoadsideAssistance"
+	                                 referencedColumnNames="CustomerID" referencedTableSchemaName="${schemaName}"/>
+ 
+
+	<addColumn tableName="Booking" schemaName="${schemaName}">
+	    <column name="BookingInsurance" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="Booking" baseColumnNames="BookingInsurance" baseTableSchemaName="${schemaName}" constraintName="Booking_Insurance_fk" referencedTableName="Insurance"
+	                                 referencedColumnNames="InsuranceID" referencedTableSchemaName="${schemaName}"/>
+ 
+ 
+	<addColumn tableName="RoadsideAssistance" schemaName="${schemaName}">
+	    <column name="RoadsideAssistanceService" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="RoadsideAssistance" baseColumnNames="RoadsideAssistanceService" baseTableSchemaName="${schemaName}" constraintName="RoadsideAssistance_Service_fk" referencedTableName="ServiceCrew"
+	                                 referencedColumnNames="ServiceID" referencedTableSchemaName="${schemaName}"/>
+ 
+ 
+	<addColumn tableName="ExtendBooking" schemaName="${schemaName}">
+	    <column name="ExtendBookingExtendbookingPayment" type="INTEGER"/>
+	</addColumn>
+	<addForeignKeyConstraint baseTableName="ExtendBooking" baseColumnNames="ExtendBookingExtendbookingPayment" baseTableSchemaName="${schemaName}" constraintName="ExtendBooking_ExtendbookingPayment_fk" referencedTableName="Payment"
+	                                 referencedColumnNames="PaymentID" referencedTableSchemaName="${schemaName}"/>
+ 
+   	    </changeSet>
+</databaseChangeLog>
